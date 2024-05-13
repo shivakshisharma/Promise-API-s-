@@ -1,29 +1,4 @@
-
 "use strict"
-const p1=new Promise((resolve,reject)=>{
-    // setTimeout(()=> resolve("P1 Success"),3000);
-    setTimeout(()=>reject("P1 fail"),3000);
-
-})
-
-const p2=new Promise((resolve,reject)=>{
-    // setTimeout(()=>resolve("P2 Success"),5000);
-    setTimeout(()=>reject("P2 fail"),1000);
-
-    
-})
-
-const p3=new Promise((resolve,reject)=>{
-    // setTimeout(()=>resolve("P3 Success"),2000);
-    setTimeout(()=>reject("P3 fail"),2000);
-})
-
-Promise.any([p1,p2,p3]).then(res=>{
-    console.log(res);
-}).catch((err)=>{               //Never get into the uncaught error always write a catch statement to get the exact error...
-    console.error(err);
-    console.log(err.errors);
-});  
 
 
 // AggregateError: All promises were rejected
@@ -41,7 +16,8 @@ function x(){
 
 }
 
-x();
+
+
 
 
 //this in strict mode-(this substitution)
@@ -51,19 +27,43 @@ x();
 
 
 
-//this value depends on how this is called(window)
-
-
+//this keyword  value depends on how this is called(window)
+x();           //when called without reference
+window.x();  //by reference
 
 //this inside a object's method
+
+const student={
+    age:10,
+    name:"Akshay",
+    printName:function(){         //now x is a method as it is inside an object ,x is the method of an object obj..
+      console.log(this.name+" of age "+this.age);   //this here refers to the object obj..
+    },
+};
+
+student.printName();
+
+const student2={
+    age:20,
+    name:"Deepika",
+
+}
 
 
 //call,apply,bind methods(sharing methods)
 
 
+student.printName.call(student2);    //value of this can be modified using call,apply and bind
+
 //this inside arrow functions
 
-
+const obj1={
+    a:10,
+    x:()=>{
+        console.log(this);   //   it will behave as it is inside the global space
+    },
+};
+obj1.x();
 //this inside nested arrow function
 
 
