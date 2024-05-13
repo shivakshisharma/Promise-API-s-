@@ -1,0 +1,19 @@
+
+.heading{
+    background-color: aquamarine;
+    text-align: center;
+
+}
+
+.btn{
+    color:green;
+    border-radius: 4%;
+    height:12px;
+    width:14px;
+    
+}
+
+.btn:hover{
+    color:blue;
+
+}
